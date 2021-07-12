@@ -79,6 +79,9 @@ $('#login').on('click', () => {
 `.toggleClass()`
 : Add and remove with one method
 
+`.html()`
+:
+
 ---
 
 ### jQuery Effect Methods
