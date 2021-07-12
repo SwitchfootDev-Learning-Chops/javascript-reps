@@ -139,6 +139,61 @@ $('#login').on('click', () => {
 
 ---
 
+### jQuery DOM Traversal
+
+#### Common usage examples
+
+`.parent()`
+:
+
+```jQuery
+$('.choice').on('click', event => {
+  $(event.currentTarget).parent().hide();
+});
+```
+
+`.siblings()`
+:
+
+```jQuery
+$('.choice').on('click', event => {
+  $(this).siblings().removeClass('selected');
+  $(event.currentTarget).addClass('selected');
+});
+```
+
+`.children()`
+:
+
+```jQuery
+$('#holder').children().on('click', event => {
+  $(event.currentTarget).css('border', '1px solid black');
+});
+```
+
+`.closest()`
+: This method will travel up the DOM tree to find the specified selector closest to the calling element
+
+```jQuery
+$('.example-class-one').closest('.another-class');
+```
+
+`.next()`
+: This method will target the next sibling of the calling element
+
+```jQuery
+$('.heading').on('click', () => {
+  $(event.currentTarget).next().toggle();
+});
+```
+
+`.find()`
+: This method will target all descendants of the specified element
+
+```jQuery
+$('.some-class').find('some-other-class').toggleClass('rotate');
+```
+
 ##### NOTES
 
 - Events can be chained
