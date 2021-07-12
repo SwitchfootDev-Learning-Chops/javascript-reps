@@ -27,7 +27,7 @@ $('#login').click(() => {
 
 ## jQuery Methods
 
-(Not exhaustive)
+### Common Methods
 
 `$()`
 : Targets id, class, or tag to create a jQuery object that can access jQuery methods through dot notation.
@@ -38,7 +38,7 @@ $('#someId').handlerMethod();
 $('[someTag]').handlerMethod();
 ```
 
-Variable naming best practice is to start variables that hold jQuery with a `$`
+Variable naming best practice is to start variables that use jQuery with a `$`
 
 ```jQuery
 const $someVariable = $('#someId')
@@ -62,7 +62,33 @@ $('#login').on('click', () => {
 })
 ```
 
-## jQuery Effect Methods
+---
+
+### jQuery Attributes
+
+[Full listing here]('https://api.jquery.com/category/attributes/)
+
+#### Common Attributes
+
+`.addClass()`
+: Add class name to element
+
+`.removeClass()`
+: Remove class name from element
+
+`.toggleClass()`
+: Add and remove with one method
+
+`.html()`
+:
+
+---
+
+### jQuery Effect Methods
+
+[Full listing here]('https://api.jquery.com/category/events/)
+
+#### Common Effects
 
 `.show()`
 : Equivalent of adding `"display: block;"` to CSS
@@ -90,3 +116,110 @@ $('#login').on('click', () => {
 
 `.slideToggle()`
 : One method for toggle in and out
+
+`.animate({}, [optional time])`
+: CSS value changes over time
+
+---
+
+### jQuery Events
+
+[Full listing here]('https://api.jquery.com/category/events/)
+
+#### Common Events
+
+- mouseenter
+- mouseleave
+- click
+- dblclick
+- mousemove
+- keydown
+- keypress
+- keyup
+
+---
+
+### jQuery DOM Traversal
+
+#### Common usage examples
+
+`.parent()`
+:
+
+```jQuery
+$('.choice').on('click', event => {
+  $(event.currentTarget).parent().hide();
+});
+```
+
+`.siblings()`
+:
+
+```jQuery
+$('.choice').on('click', event => {
+  $(this).siblings().removeClass('selected');
+  $(event.currentTarget).addClass('selected');
+});
+```
+
+`.children()`
+:
+
+```jQuery
+$('#holder').children().on('click', event => {
+  $(event.currentTarget).css('border', '1px solid black');
+});
+```
+
+`.closest()`
+: This method will travel up the DOM tree to find the specified selector closest to the calling element
+
+```jQuery
+$('.example-class-one').closest('.another-class');
+```
+
+`.next()`
+: This method will target the next sibling of the calling element
+
+```jQuery
+$('.heading').on('click', () => {
+  $(event.currentTarget).next().toggle();
+});
+```
+
+`.find()`
+: This method will target all descendants of the specified element
+
+```jQuery
+$('.some-class').find('some-other-class').toggleClass('rotate');
+```
+
+##### NOTES
+
+- Events can be chained
+
+```jQuery
+  $('.product-photo').on('mouseenter', () => {
+    $('.product-photo').addClass('photo-active')
+  }).on('mouseleave', () => {
+     $('.product-photo').removeClass('photo-active')
+  });
+```
+
+- `$(event.currentTarget)` <----- Hi! I am your BFF for event actions!
+
+```jQuery
+  $('.product-photo').on('mouseenter', (event) => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', (event) => {
+    $(event.currentTarget).removeClass('photo-active')
+  });
+```
+
+- You can bind more than one event to the same listener
+
+```jQuery
+  $menu.on('mouseenter mouseleave', () => {
+    $navMenu.toggle();
+  });
+```
